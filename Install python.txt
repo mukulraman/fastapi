@@ -1,0 +1,34 @@
+Install python
+
+Install VS code
+
+Install Virtual environment
+py -3 -m venv <name of the virtual environment>  # To create virtual environment
+To go Command palette - python select interpreter - Enter Interpreter path - .\venv\Scripts\python.exe  # vs code uses python in virtual environment
+venv\Scripts\activate.bat   # For virtual environment in terminal
+
+Install Fastapi
+pip install fastapi[all]   #in the terminal
+pip freeze                 # wil show all the packages installed
+
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello, World!"}
+
+
+uvicorn main:app           # web server set up in the terminal
+
+uvicorn main:app --reload   # automatically reload changes in the code
+
+
+from pydantic import BaseModel   # pydantic to validate whether data and data type shared by the team matches with our data eg data column , data type
+
+class Food(BaseModel):
+    title: str
+    menu: str
+    publish : bool = True 
